@@ -33,6 +33,10 @@ class TodoListScreen: UIViewController {
         
         return tempItems
     }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "ListToItem", sender: self)
+    }
 }
 
 extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {

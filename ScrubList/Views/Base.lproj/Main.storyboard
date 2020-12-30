@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo List Screen-->
+        <!--To-Do List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TodoListScreen" customModule="ScrubList" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,9 +57,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Wc-uG-8Qh" secondAttribute="bottom" id="xGC-DU-UjM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qp3-Wc-Wqp"/>
+                    <navigationItem key="navigationItem" title="To-Do List" id="Qp3-Wc-Wqp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QfK-oP-voA">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="Jqr-LB-rLW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listTableView" destination="3Wc-uG-8Qh" id="qnT-Og-I5F"/>
+                        <segue destination="E7g-fI-veD" kind="show" identifier="ListToItem" id="V4a-FJ-eRq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,8 +78,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sr5-4p-CSQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cBP-YV-NbX">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cBP-YV-NbX">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -83,6 +90,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xal-oD-boj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="118.52678571428571"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UIm-Pl-ONv">
+            <objects>
+                <viewController id="E7g-fI-veD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J4u-ho-1ey">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sng-tR-PV2">
+                                <rect key="frame" x="48" y="156" width="294" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hYF-R2-2lT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sng-tR-PV2" secondAttribute="trailing" constant="32" id="701-gk-KoO"/>
+                            <constraint firstItem="sng-tR-PV2" firstAttribute="leading" secondItem="J4u-ho-1ey" secondAttribute="leadingMargin" constant="32" id="bDX-g9-LFS"/>
+                            <constraint firstItem="sng-tR-PV2" firstAttribute="top" secondItem="J4u-ho-1ey" secondAttribute="topMargin" constant="16" id="jAv-4A-ZC2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mqg-eA-yAh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="feg-nN-h9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1629" y="118"/>
         </scene>
     </scenes>
     <resources>
