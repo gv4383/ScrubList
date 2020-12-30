@@ -50,11 +50,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Wc-uG-8Qh" secondAttribute="trailing" id="76Q-VE-ICY"/>
-                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gyy-OA-tqr"/>
-                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="jEg-yU-4Rq"/>
-                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ot0-ba-Qbj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Wc-uG-8Qh" secondAttribute="bottom" id="xGC-DU-UjM"/>
+                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G9D-fN-bPL"/>
+                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nJG-Kv-fvl"/>
+                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pZw-iu-wYG"/>
+                            <constraint firstItem="3Wc-uG-8Qh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ri3-CQ-Ded"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To-Do List" id="Qp3-Wc-Wqp">
@@ -91,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="118.52678571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--New List Item Screen-->
         <scene sceneID="UIm-Pl-ONv">
             <objects>
-                <viewController id="E7g-fI-veD" sceneMemberID="viewController">
+                <viewController id="E7g-fI-veD" customClass="NewListItemScreen" customModule="ScrubList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J4u-ho-1ey">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +112,16 @@
                             <constraint firstItem="sng-tR-PV2" firstAttribute="top" secondItem="J4u-ho-1ey" secondAttribute="topMargin" constant="16" id="jAv-4A-ZC2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mqg-eA-yAh"/>
+                    <navigationItem key="navigationItem" id="mqg-eA-yAh">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="HgJ-Ra-Udd">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="E7g-fI-veD" id="N7t-dP-DjU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newItemNameTextField" destination="sng-tR-PV2" id="WjF-aJ-eWp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feg-nN-h9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
