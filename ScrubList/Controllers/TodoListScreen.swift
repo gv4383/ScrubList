@@ -34,8 +34,17 @@ class TodoListScreen: UIViewController {
         return tempItems
     }
     
+    @IBAction func unwindToListScreen(_ unwindSegue: UIStoryboardSegue) {}
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "ListToItem", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ListToItem" {
+            let destination = segue.destination as! NewListItemScreen
+            destination.saveNewItemDelegate = self
+        }
     }
 }
 
@@ -51,5 +60,14 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
         cell.setItem(item: item)
         
         return cell
+    }
+}
+
+extension TodoListScreen: SaveNewItemDelegate {
+    func didSaveNewItem(newItem: Item) {
+        items.append(newItem)
+        listTableView.beginUpdates()
+        listTableView.insertRows(at: [IndexPath.init(row: self.items.count - 1, section: 0)], with: .automatic)
+        listTableView.endUpdates()
     }
 }

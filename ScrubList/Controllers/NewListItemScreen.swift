@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol SaveNewItemDelegate {
+    func didSaveNewItem(newItem: Item)
+}
+
 class NewListItemScreen: UIViewController {
     @IBOutlet weak var newItemNameTextField: UITextField!
+    
+    var saveNewItemDelegate: SaveNewItemDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +24,11 @@ class NewListItemScreen: UIViewController {
         newItemNameTextField.delegate = self
     }
     
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newItemName = newItemNameTextField.text, !newItemName.isEmpty {
-            print(newItemName)
+            saveNewItemDelegate?.didSaveNewItem(newItem: Item(name: newItemName))
             newItemNameTextField.text = ""
             newItemNameTextField.resignFirstResponder()
-        } else {
-            print("Type something")
         }
     }
 }
