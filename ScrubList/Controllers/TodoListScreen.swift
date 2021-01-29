@@ -11,6 +11,7 @@ class TodoListScreen: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     
     var items: [Item] = []
+    var checkedCells: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,18 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        removeItem(itemIndex: indexPath.row)
+        let cell = tableView.cellForRow(at: indexPath)
+        
+//        removeItem(itemIndex: indexPath.row)
+        if checkedCells.contains(indexPath.row) {
+            let checkedCellsIndex = checkedCells.firstIndex(of: indexPath.row)
+            
+            cell?.accessoryType = .none
+            checkedCells.remove(at: checkedCellsIndex!)
+        } else {
+            cell?.accessoryType = .checkmark
+            checkedCells.append(indexPath.row)
+        }
         tableView.reloadData()
     }
 }
