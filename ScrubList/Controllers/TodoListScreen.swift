@@ -42,7 +42,10 @@ class TodoListScreen: UIViewController {
     }
     
     func removeItem(itemIndex: Int) {
+        let checkedCellsIndex = checkedCells.firstIndex(of: itemIndex)
+        
         items.remove(at: itemIndex)
+        checkedCells.remove(at: checkedCellsIndex!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,10 +90,14 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
         if (editingStyle == .delete) {
             print("Deleting cell at index \(indexPath.row)")
+            cell?.accessoryType = .none
             removeItem(itemIndex: indexPath.row)
         }
+        
         tableView.reloadData()
     }
 }
