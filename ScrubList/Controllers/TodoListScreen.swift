@@ -70,7 +70,6 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         
-//        removeItem(itemIndex: indexPath.row)
         if checkedCells.contains(indexPath.row) {
             let checkedCellsIndex = checkedCells.firstIndex(of: indexPath.row)
             
@@ -79,6 +78,18 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell?.accessoryType = .checkmark
             checkedCells.append(indexPath.row)
+        }
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            print("Deleting cell at index \(indexPath.row)")
+            removeItem(itemIndex: indexPath.row)
         }
         tableView.reloadData()
     }
