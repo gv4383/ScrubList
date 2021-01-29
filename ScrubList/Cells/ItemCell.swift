@@ -13,4 +13,8 @@ class ItemCell: UITableViewCell {
     func setItem(item: Item) {
         itemNameLabel.text = item.name
     }
+    
+    func printName(item: Item) {
+        print(item.name)
+    }
 }

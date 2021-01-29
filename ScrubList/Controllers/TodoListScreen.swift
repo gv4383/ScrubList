@@ -37,11 +37,15 @@ class TodoListScreen: UIViewController {
     @IBAction func unwindToListScreen(_ unwindSegue: UIStoryboardSegue) {}
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "ListToItem", sender: self)
+        performSegue(withIdentifier: K.listToItemSegue, sender: self)
+    }
+    
+    func removeItem(itemIndex: Int) {
+        items.remove(at: itemIndex)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ListToItem" {
+        if segue.identifier == K.listToItemSegue {
             let destination = segue.destination as! NewListItemScreen
             destination.saveNewItemDelegate = self
         }
@@ -55,11 +59,22 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as! ItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.itemCellIdentifier) as! ItemCell
         
         cell.setItem(item: item)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.itemCellIdentifier) as! ItemCell
+        
+        print(indexPath.row)
+        cell.printName(item: item)
+        
+        removeItem(itemIndex: indexPath.row)
+        tableView.reloadData()
     }
 }
 
