@@ -67,12 +67,6 @@ extension TodoListScreen: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.itemCellIdentifier) as! ItemCell
-        
-        print(indexPath.row)
-        cell.printName(item: item)
-        
         removeItem(itemIndex: indexPath.row)
         tableView.reloadData()
     }
