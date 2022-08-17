@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TasksListViewController.swift
 //  ScrubList
 //
 //  Created by Goyo Vargas on 8/17/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TasksListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -15,8 +15,7 @@ class ViewController: UIViewController {
     }
     
     private func configure() {
-        view.backgroundColor = .systemPink
-        title = "Test"
+        view.backgroundColor = .systemPurple
+        title = "Tasks"
     }
 }
-
