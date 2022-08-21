@@ -14,6 +14,7 @@
 		B9295F6128AD992000EBD84D /* TasksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9295F6028AD992000EBD84D /* TasksListViewController.swift */; };
 		B9295F6428AD9CD300EBD84D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9295F6328AD9CD300EBD84D /* Task.swift */; };
 		B9295F6628B1E7DC00EBD84D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9295F6528B1E7DC00EBD84D /* AddNewTaskViewController.swift */; };
+		B9295F6928B1FA9600EBD84D /* SLTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9295F6828B1FA9600EBD84D /* SLTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B9295F6028AD992000EBD84D /* TasksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewController.swift; sourceTree = "<group>"; };
 		B9295F6328AD9CD300EBD84D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B9295F6528B1E7DC00EBD84D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
+		B9295F6828B1FA9600EBD84D /* SLTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		B9295F4928AD940700EBD84D /* ScrubList */ = {
 			isa = PBXGroup;
 			children = (
+				B9295F6728B1FA6B00EBD84D /* Components */,
 				B9295F6228AD9CC200EBD84D /* Models */,
 				B9295F5F28AD98D600EBD84D /* Screens */,
 				B9295F5E28AD986900EBD84D /* Support */,
@@ -92,6 +95,22 @@
 				B9295F6328AD9CD300EBD84D /* Task.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B9295F6728B1FA6B00EBD84D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B9295F6A28B1FA9C00EBD84D /* TextFields */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B9295F6A28B1FA9C00EBD84D /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				B9295F6828B1FA9600EBD84D /* SLTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +185,7 @@
 			files = (
 				B9295F6428AD9CD300EBD84D /* Task.swift in Sources */,
 				B9295F6128AD992000EBD84D /* TasksListViewController.swift in Sources */,
+				B9295F6928B1FA9600EBD84D /* SLTextField.swift in Sources */,
 				B9295F4B28AD940700EBD84D /* AppDelegate.swift in Sources */,
 				B9295F6628B1E7DC00EBD84D /* AddNewTaskViewController.swift in Sources */,
 				B9295F4D28AD940700EBD84D /* SceneDelegate.swift in Sources */,
