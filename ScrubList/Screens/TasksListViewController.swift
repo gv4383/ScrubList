@@ -26,6 +26,9 @@ class TasksListViewController: UIViewController {
     private func configureVC() {
         view.backgroundColor = .systemBackground
         title = "Tasks"
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     private func configureTableView() {
@@ -34,6 +37,12 @@ class TasksListViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    @objc private func addButtonTapped() {
+        print("Create new task")
+        let addNewTaskVC = AddNewTaskViewController()
+        present(addNewTaskVC, animated: true)
     }
 }
 
