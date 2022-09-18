@@ -21,6 +21,11 @@ class AddNewTaskViewController: UIViewController {
     
     private func configureVC() {
         view.backgroundColor = .systemBackground
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewTask))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewTask))
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = addButton
     }
     
     private func configureTextField() {
@@ -33,7 +38,7 @@ class AddNewTaskViewController: UIViewController {
         let padding: CGFloat = 12
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             textField.heightAnchor.constraint(equalToConstant: 40)
@@ -43,6 +48,15 @@ class AddNewTaskViewController: UIViewController {
     private func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func saveNewTask() {
+        print("Saving new task")
+        dismiss(animated: true)
+    }
+    
+    @objc private func cancelNewTask() {
+        dismiss(animated: true)
     }
 }
 

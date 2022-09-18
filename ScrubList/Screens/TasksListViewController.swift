@@ -40,9 +40,9 @@ class TasksListViewController: UIViewController {
     }
     
     @objc private func addButtonTapped() {
-        print("Create new task")
         let addNewTaskVC = AddNewTaskViewController()
-        present(addNewTaskVC, animated: true)
+        let navController = UINavigationController(rootViewController: addNewTaskVC)
+        present(navController, animated: true)
     }
 }
 
