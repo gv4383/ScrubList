@@ -24,12 +24,15 @@ class AddNewTaskViewController: UIViewController {
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewTask))
         let addButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewTask))
+        
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func configureTextField() {
         textField.delegate = self
+        textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
     }
     
     private func layoutUI() {
@@ -51,12 +54,24 @@ class AddNewTaskViewController: UIViewController {
     }
     
     @objc private func saveNewTask() {
-        print("Saving new task")
+        if let newTask = textField.text {
+            print("Saving new task: \(newTask)")
+        }
+        
         dismiss(animated: true)
     }
     
     @objc private func cancelNewTask() {
         dismiss(animated: true)
+    }
+    
+    @objc private func editingChanged(_ textField: UITextField) {
+        guard let newTask = textField.text, !newTask.isEmpty else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            return
+        }
+        
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 }
 
