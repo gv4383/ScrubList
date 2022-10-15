@@ -67,6 +67,9 @@ extension TasksListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension TasksListViewController: AddNewTaskViewControllerDelegate {
     func didTapSave(_ newTask: String) {
-        print("Saving new task: \(newTask)")
+        let newTaskModel = Task(name: newTask)
+        
+        tasks.append(newTaskModel)
+        tableView.reloadData()
     }
 }
