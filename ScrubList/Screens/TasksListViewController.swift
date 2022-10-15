@@ -40,7 +40,7 @@ class TasksListViewController: UIViewController {
     }
     
     @objc private func addButtonTapped() {
-        let addNewTaskVC = AddNewTaskViewController()
+        let addNewTaskVC = AddNewTaskViewController(delegate: self)
         let navController = UINavigationController(rootViewController: addNewTaskVC)
         present(navController, animated: true)
     }
@@ -62,5 +62,11 @@ extension TasksListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension TasksListViewController: AddNewTaskViewControllerDelegate {
+    func didTapSave(_ newTask: String) {
+        print("Saving new task: \(newTask)")
     }
 }

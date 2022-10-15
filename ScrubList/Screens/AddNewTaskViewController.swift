@@ -7,8 +7,23 @@
 
 import UIKit
 
+protocol AddNewTaskViewControllerDelegate: AnyObject {
+    func didTapSave(_ newTask: String)
+}
+
 class AddNewTaskViewController: UIViewController {
     let textField = SLTextField()
+    
+    weak var delegate: AddNewTaskViewControllerDelegate?
+    
+    init(delegate: AddNewTaskViewControllerDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +70,7 @@ class AddNewTaskViewController: UIViewController {
     
     @objc private func saveNewTask() {
         if let newTask = textField.text {
-            print("Saving new task: \(newTask)")
+            delegate?.didTapSave(newTask)
         }
         
         dismiss(animated: true)
