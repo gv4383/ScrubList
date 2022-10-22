@@ -55,13 +55,27 @@ extension TasksListViewController: UITableViewDataSource, UITableViewDelegate {
         let task = tasks[indexPath.row]
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = task.name
+        let attributeString = NSMutableAttributedString(string: task.name)
+        let attributeStringRange = NSRange(location: 0, length: attributeString.length)
+        
+        if task.isChecked {
+            attributeString.addAttribute(
+                NSAttributedString.Key.strikethroughStyle,
+                value: 2,
+                range: attributeStringRange
+            )
+        }
+        
+        cell.textLabel?.attributedText = attributeString
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tasks[indexPath.row].isChecked.toggle()
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }
 

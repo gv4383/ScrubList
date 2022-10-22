@@ -10,4 +10,5 @@ import Foundation
 struct Task {
     let id = UUID()
     let name: String
+    var isChecked = false
 }
