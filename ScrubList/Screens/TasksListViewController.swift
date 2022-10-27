@@ -77,6 +77,13 @@ extension TasksListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+    }
 }
 
 extension TasksListViewController: AddNewTaskViewControllerDelegate {
